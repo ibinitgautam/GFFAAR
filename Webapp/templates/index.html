@@ -20,9 +20,8 @@
         class Gffaar extends React.Component {
             constructor(props) {
                 super(props)
-                this.state = {hrs: 48, min: 60, sec: 60}
+                this.state = { hrs: 48, min: 60, sec: 60 }
             }
-
             render() {
                 return (
                     <div className="main">
@@ -43,45 +42,39 @@
                         <div className="content">
                             <h4>Grab Amazing Deals Now ! Awesome Offers and Enjoy Great Sale!</h4>
 
-                            <div className="timer" >{this.timer.hrs} : {this.timer.min} : {this.timer.sec}</div>
+                            <div className="timer">{this.state.hrs} : {this.state.min} : {this.state.sec}</div>
                         </div>
                     </div>
                 )
             }
-            refresh=()=>{
-
-            }
-
             timer = () => {
-                while (true) {
-                    if (sec === 0) {
-                        if (min === 0) {
-                            if (hrs !== 0) {
-                                set.state({
-                                    hrs : hrs - 1
-                                })
-                            }
-                            else {
-                                set.state({
-                                    hrs : 48
-                                })
-                            }
+                if (sec === 0) {
+                    if (min === 0) {
+                        if (hrs !== 0) {
                             set.state({
-                                min : min - 1
+                                hrs: hrs - 1
                             })
                         }
                         else {
                             set.state({
-                                min : 60
+                                hrs: 48
                             })
                         }
                         set.state({
-                            sec : sec - 1
+                            min: min - 1
                         })
                     }
                     else {
-                        sec : sec - 1
+                        set.state({
+                            min: 60
+                        })
                     }
+                    set.state({
+                        sec: sec - 1
+                    })
+                }
+                else {
+                    sec: sec - 1
                 }
             }
         }
