@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/index.css">
+    <title>GFFAAR</title>
+</head>
+
+<body>
+    <div id="main"></div>
+
+    <script type="text/babel">
+
+        class Gffaar extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state = {hrs: 48, min: 60, sec: 60}
+            }
+
+            render() {
+                return (
+                    <div className="main">
+                        <div className="image">
+                            <div className="blank">
+                                <nav>
+                                    <h1>GFFAAR</h1>
+                                    <ul>
+                                        <li><a href="#">Home</a></li>
+                                        <li><a href="#">About</a></li>
+                                        <li><a href="#">Signup</a></li>
+                                    </ul>
+                                </nav>
+                                <button className="buy">Buy Now</button>
+                            </div>
+                        </div>
+
+                        <div className="content">
+                            <h4>Grab Amazing Deals Now ! Awesome Offers and Enjoy Great Sale!</h4>
+
+                            <div className="timer" >{this.timer.hrs} : {this.timer.min} : {this.timer.sec}</div>
+                        </div>
+                    </div>
+                )
+            }
+            refresh=()=>{
+
+            }
+
+            timer = () => {
+                while (true) {
+                    if (sec === 0) {
+                        if (min === 0) {
+                            if (hrs !== 0) {
+                                set.state({
+                                    hrs : hrs - 1
+                                })
+                            }
+                            else {
+                                set.state({
+                                    hrs : 48
+                                })
+                            }
+                            set.state({
+                                min : min - 1
+                            })
+                        }
+                        else {
+                            set.state({
+                                min : 60
+                            })
+                        }
+                        set.state({
+                            sec : sec - 1
+                        })
+                    }
+                    else {
+                        sec : sec - 1
+                    }
+                }
+            }
+        }
+
+        ReactDOM.render(< Gffaar />, document.querySelector("#main"));
+    </script>
+</body>
+
+</html>
